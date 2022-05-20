@@ -13,12 +13,6 @@ streamlit.text(fruityvice_response.json())
 
 
 import snowflake.connector
-#my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
-#my_cnx=my_cnx.cursor()
-#my_cnx.execute("SELECT CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
-#my_data_row=my_cnx.fetchone();
-#streamlit.text("Hello from snowflake: ")
-#streamlit.text(my_data_row)
 
                
 
