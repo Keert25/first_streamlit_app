@@ -19,7 +19,10 @@ my_cur.execute("SELECT * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.text("list of fruits:")
 streamlit.text(my_data_row)
-fruits_selected=streamlit.multiselect("pick some fruits:",list(my_fruit_list.index),['Avocado','Apple'])
+streamlit.write('tahnks for adding',add_my_fruit)
+my_cur.execute("insert into fruit_load_list values('from streamlit')")
+
+
 
                
 
