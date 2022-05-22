@@ -10,6 +10,8 @@ f=my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(f)
 
 streamlit.header('fruityvice advice')
+
+
 def get_fruityvice_data(this_fruit_choice):
    fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
     
@@ -33,13 +35,25 @@ except URLError as e:
 
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
+
 my_cur.execute("SELECT * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.text("list of fruits:")
 streamlit.text(my_data_row)
 #streamlit.write('tahnks for adding',add_my_fruit)
 my_cur.execute("insert into fruit_load_list values('from streamlit')")
+streamlit.header("the fruit load list conatins:")
+def get_fruit_load_list():
+   with my_cnx.cursor() as my_cur:
+      my_cur.execute("SELECT * from fruit_load_list")
+      return my_cur.fetchall()
+
+if streamlit.button("get fruit load list'):
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_data_rows=get_fruit_load_list()
+   streamlit.dataframe(my_data_rows)                  
+                     
+
 
 
 
