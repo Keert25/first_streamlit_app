@@ -5,7 +5,7 @@ import snowflake.connector
 from urllib.error import URLError
 
 streamlit.header('fruityvice fruit advice!')
-f=streamlit.text_input('what fruit would you like to get the information','apple')
+f=streamlit.text_input('what fruit would you like  the information about?','apple')
 streamlit.write('the user entered',f);
 fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+f)
 fruityvice_normalized=pandas.json_normalize(fruityvice_response.json())
